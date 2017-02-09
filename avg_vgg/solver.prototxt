@@ -1,0 +1,16 @@
+test_iter: 2897
+test_interval: 188
+base_lr: 0.001
+display: 20
+max_iter: 3948
+lr_policy: "multistep"
+gamma: 0.1
+momentum: 0.9
+weight_decay: 0.0005
+snapshot: 188
+snapshot_prefix: "/opt/luojh/Net-Compression/value_sum/CUB200/1_ft_avg_vgg/avg_vgg/snapshot/"
+solver_mode: GPU
+net: "/opt/luojh/Net-Compression/value_sum/CUB200/1_ft_avg_vgg/avg_vgg/trainval.prototxt"
+test_initialization: false
+stepvalue: 1316
+stepvalue: 2632
