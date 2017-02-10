@@ -10,7 +10,7 @@ from PIL import Image
 def im_resize(im, height=224, width=224):
     d_type = im.dtype
     im = Image.fromarray(im)
-    im = im.resize([height, width], Image.BILINEAR)
+    im = im.resize([height, width], Image.BICUBIC)
     im = np.array(im, d_type)
     return im
 
