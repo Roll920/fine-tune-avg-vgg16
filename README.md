@@ -16,7 +16,8 @@ Remove fc layers, replace pool5 with 14x14 average pooling and softmax layer, th
 
 ## Results
 | epoch | val acc |
-| -- | --|
+| ----- | --------|
+| 9 | 9 |
 
 ## Others
 This strategy is much better than train softmax first follwed with fine tuning, which only achieving 0.70176 accuracy!
