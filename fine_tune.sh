@@ -2,7 +2,7 @@
 python generate_prototxt.py
 TOOLS=/home/luojh2/Software/caffe-master/build/tools
 model_path=/data/luojh/net/caffe/fc_conv_VGG_ILSVRC_16_layers.caffemodel
-gpu=7
+gpu=6,7
 
 log_name="AVG_VGG16.log"
 LOG=avg_vgg/logs/${log_name}

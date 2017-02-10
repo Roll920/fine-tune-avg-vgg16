@@ -70,7 +70,7 @@ class Solver:
         self.p.weight_decay = 0.0005
         self.p.display = 20
 
-        self.p.snapshot = 188
+        self.p.snapshot = 3948
         self.p.snapshot_prefix = osp.join(self.folder, "snapshot/")
         self.p.solver_mode = self.machine.GPU
 
@@ -164,8 +164,9 @@ def vgg_16(lmdb, bs_train=32, bs_val=10, lmdb_flag=True, not_deploy=True):
         n.relu5_2, nout=512, pad=1, ks=3)
     n.pool5 = ave_pool(n.relu5_3, ks=14, stride=1)
 
-    n.softmax = L.Convolution(n.pool5, kernel_size=1, num_output=200, param=[
-        dict(lr_mult=10, decay_mult=10), dict(lr_mult=20, decay_mult=0)])
+    n.softmax = L.Convolution(n.pool5, kernel_size=1, num_output=200,
+                              param=[dict(lr_mult=10, decay_mult=10),
+                                     dict(lr_mult=20, decay_mult=0)])
     if not_deploy:
         n.loss = L.SoftmaxWithLoss(n.softmax, n.label)
         n.acc_top_1 = L.Accuracy(n.softmax, n.label, top_k=1)
@@ -186,7 +187,7 @@ def solver_and_prototxt():
 
     with open(pt_folder + '/trainval.prototxt', 'w') as f:
         f.write(
-            vgg_16('/opt/luojh/Dataset/CUB/LMDB/', bs_train=32, bs_val=2,
+            vgg_16('/opt/luojh/Dataset/CUB/LMDB/', bs_train=16, bs_val=2,
                    lmdb_flag=True))
 
     with open(pt_folder + '/deploy.prototxt', 'w') as f:

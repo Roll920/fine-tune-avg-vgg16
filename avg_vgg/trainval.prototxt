@@ -15,7 +15,7 @@ layer {
   }
   data_param {
     source: "/opt/luojh/Dataset/CUB/LMDB/cub200_2011_train_lmdb"
-    batch_size: 32
+    batch_size: 16
     backend: LMDB
   }
 }
