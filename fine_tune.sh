@@ -9,10 +9,8 @@ LOG=avg_vgg/logs/${log_name}
 if [ ! -d "avg_vgg/logs" ]; then
    mkdir avg_vgg/logs
 fi
-exec &> >(tee -a "$LOG")
-echo Logging output to "$LOG"
 
-$TOOLS/caffe train --solver=avg_vgg/solver.prototxt -weights $model_path -gpu $gpu
+$TOOLS/caffe train --solver=avg_vgg/solver.prototxt -weights $model_path -gpu $gpu 2>&1 | tee $LOG
 
 cd avg_vgg/logs/
 ../../parse_log/parse_log.sh "$log_name"
